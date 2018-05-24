@@ -3,6 +3,7 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
+import Vuex from "vuex";
 
 storiesOf("InboxScreen", module).add("default", () => {
   const tasks = [{ id: "6", title: "Task 6" }];
@@ -10,14 +11,12 @@ storiesOf("InboxScreen", module).add("default", () => {
     template: `<inbox-screen :tasks="tasks"/>`,
     data() {
       return {
-        tasks
+        tasks: this.$store.state.tasks
       };
     },
-    methods: {
-      pin() {
-        console.log("hello");
-      }
-    }
+    store: new Vuex.Store({
+      state: { tasks: [] }
+    })
   };
 });
 

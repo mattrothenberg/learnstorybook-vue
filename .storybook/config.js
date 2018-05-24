@@ -1,7 +1,9 @@
 import Vue from "vue";
+import Vuex from "vuex";
 import { configure } from "@storybook/vue";
 import "../src/style/index.css";
 import InboxScreen from "../src/components/InboxScreen";
+Vue.use(Vuex);
 
 Vue.component("inbox-screen", InboxScreen);
 
