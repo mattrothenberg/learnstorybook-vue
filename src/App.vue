@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    Hello
+      <inbox-screen></inbox-screen>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import InboxScreen from "@/components/InboxScreen";
 export default {
   name: "app",
   components: {
-    HelloWorld
+    InboxScreen
   }
 };
 </script>
