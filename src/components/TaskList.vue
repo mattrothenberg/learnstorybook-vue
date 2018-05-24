@@ -13,7 +13,7 @@
         <div class="subtitle-message">Sit back and relax</div>
       </div>
     </div>
-    <div class="list-items" v-else>
+    <div class="list-items" v-if="showTasks">
       <task v-for="(task, index) in tasksInOrder" :key="index" :task="task"/>
     </div>
   </div>
@@ -21,6 +21,7 @@
 
 <script>
 import Task from "@/components/Task";
+import { mapState } from "vuex";
 export default {
   name: "task-list",
   props: {
@@ -32,14 +33,13 @@ export default {
   components: {
     Task
   },
-  data() {
-    return {
-      tasks: []
-    };
-  },
   computed: {
+    ...mapState(["tasks"]),
     noTasks() {
       return this.tasks.length === 0;
+    },
+    showTasks() {
+      return !this.loading && !this.noTasks;
     },
     tasksInOrder() {
       return [

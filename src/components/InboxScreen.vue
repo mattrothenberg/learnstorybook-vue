@@ -24,8 +24,8 @@ export default {
   name: "inbox-screen",
   props: {
     error: {
-      type: String,
-      default: null
+      type: Boolean,
+      default: false
     }
   },
   components: {

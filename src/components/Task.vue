@@ -7,23 +7,21 @@
         :disabled="true"
         name="checked"
       />
-      <span class="checkbox-custom" @click="archiveTask"/>
+      <span class="checkbox-custom" @click="archive"/>
     </label>
     <div class="title">
-      <input type="text" :value="this.task.title" placeholder="Input title" />
+      <input type="text" :readonly="true" :value="this.task.title" placeholder="Input title" />
     </div>
-
-    <!-- <div class="actions" onClick={event => event.stopPropagation()}>
-      {state !== 'TASK_ARCHIVED' && (
-        <a onClick={() => onPinTask(id)}>
-          <span class={`icon-star`} />
-        </a>
-      )}
-    </div> -->
+    <div class="actions">
+      <a @click="pin" v-if="!isChecked">
+        <span class="icon-star"/>
+      </a>
+    </div>
   </div>  
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "task",
   props: {
@@ -31,7 +29,13 @@ export default {
     required: true
   },
   methods: {
-    archiveTask() {}
+    ...mapActions(["archiveTask", "pinTask"]),
+    archive() {
+      this.archiveTask(this.task.id);
+    },
+    pin() {
+      this.pinTask(this.task.id);
+    }
   },
   computed: {
     taskClass() {
