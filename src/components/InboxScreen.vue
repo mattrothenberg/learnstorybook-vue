@@ -13,7 +13,7 @@
           <span class="title-wrapper">Taskbox</span>
         </h1>
       </nav>
-      <task-list :tasks="tasks"/>
+      <task-list/>
     </div>
   </div>
 </template>
@@ -26,9 +26,6 @@ export default {
     error: {
       type: Boolean,
       default: false
-    },
-    tasks: {
-      type: Array
     }
   },
   components: {

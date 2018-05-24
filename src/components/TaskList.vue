@@ -21,21 +21,21 @@
 
 <script>
 import Task from "@/components/Task";
+import { mapState } from "vuex";
+
 export default {
   name: "task-list",
   props: {
     loading: {
       type: Boolean,
       default: false
-    },
-    tasks: {
-      type: Array
     }
   },
   components: {
     Task
   },
   computed: {
+    ...mapState(["tasks"]),
     noTasks() {
       return this.tasks.length === 0;
     },
