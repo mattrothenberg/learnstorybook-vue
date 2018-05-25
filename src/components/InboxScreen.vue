@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import TaskList from "@/components/TaskList";
+import TaskList from "@/components/TaskList.vue";
+
 export default {
   name: "inbox-screen",
   props: {

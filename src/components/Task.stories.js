@@ -1,9 +1,24 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/vue";
-import { task, generateStore } from "./stub";
+import { store } from "./InboxScreen.stories";
+
+export const task = {
+  id: "1",
+  title: "Test Task",
+  state: "TASK_INBOX",
+  updatedAt: new Date(2018, 0, 1, 9, 0)
+};
+
+const withStore = () => {
+  return {
+    store,
+    template: `<story/>`
+  };
+};
 
 storiesOf("Task", module)
+  .addDecorator(withStore)
   .add("default", () => {
     return {
       template: `<task :task="task"/>`,
@@ -11,8 +26,7 @@ storiesOf("Task", module)
         return {
           task
         };
-      },
-      store: generateStore()
+      }
     };
   })
   .add("pinned", () => {
@@ -22,8 +36,7 @@ storiesOf("Task", module)
         return {
           task: { ...task, state: "TASK_PINNED" }
         };
-      },
-      store: generateStore()
+      }
     };
   })
   .add("archived", () => {
@@ -33,8 +46,7 @@ storiesOf("Task", module)
         return {
           task: { ...task, state: "TASK_ARCHIVED" }
         };
-      },
-      store: generateStore()
+      }
     };
   });
 /* eslint-enable react/react-in-jsx-scope */

@@ -1,13 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import Vuex from "vuex";
 
-const task = {
-  id: "1",
-  title: "Test Task",
-  state: "TASK_INBOX",
-  updatedAt: new Date(2018, 0, 1, 9, 0)
-};
-
 const defaultTaskList = [
   { ...task, id: "1", title: "Task 1" },
   { ...task, id: "2", title: "Task 2" },
