@@ -1,4 +1,5 @@
 import { action } from "@storybook/addon-actions";
+import Vuex from "vuex";
 
 const task = {
   id: "1",
@@ -21,19 +22,20 @@ const withPinnedTasks = [
   { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" }
 ];
 
-const generateStore = (tasks = defaultTaskList) => ({
-  state: {
-    tasks
-  },
-  actions: {
-    pinTask() {
-      action("pin");
+const generateStore = (tasks = defaultTaskList) => {
+  return new Vuex.Store({
+    state: {
+      tasks
     },
-    archiveTask() {
-      console.log("FOO");
-      action("archive");
+    actions: {
+      pinTask(context, id) {
+        action("pinTask")(id);
+      },
+      archiveTask(context, id) {
+        action("archiveTask")(id);
+      }
     }
-  }
-});
+  });
+};
 
-export default generateStore;
+export { task, generateStore, withPinnedTasks };
