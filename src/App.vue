@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <inbox-screen></inbox-screen>
+    <inbox-screen></inbox-screen>
   </div>
 </template>
 
